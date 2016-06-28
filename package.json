@@ -1,0 +1,33 @@
+{
+  "name": "mathematicalfield",
+  "version": "0.0.1",
+  "description": "it's a game.",
+  "main": "src-server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://sombriks@github.com/sombriks/mathematicalfield.git"
+  },
+  "keywords": [
+    "game",
+    "math",
+    "javascript",
+    "pixi"
+  ],
+  "author": "sombriks@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sombriks/mathematicalfield/issues"
+  },
+  "dependencies": {
+    "express": "~4.14.0",
+    "knex": "~0.11.7",
+    "pixi.js": "~3.0.11"
+  },
+  "devDependencies": {
+    "browserify": "~13.0.1",
+    "nodemon": "~1.9.2"
+  }
+}
