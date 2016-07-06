@@ -1,5 +1,5 @@
 {
-  "name": "mathematicalfield",
+  "name": "numberfield",
   "version": "0.0.1",
   "description": "it's a game.",
   "main": "src-server/index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://sombriks@github.com/sombriks/mathematicalfield.git"
+    "url": "https://sombriks@github.com/sombriks/numberfield.git"
   },
   "keywords": [
     "game",
@@ -19,7 +19,7 @@
   "author": "sombriks@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sombriks/mathematicalfield/issues"
+    "url": "https://github.com/sombriks/numberfield/issues"
   },
   "dependencies": {
     "express": "~4.14.0",
