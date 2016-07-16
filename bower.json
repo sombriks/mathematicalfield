@@ -1,0 +1,20 @@
+{
+  "name": "numberfield",
+  "description": "it's a game.",
+  "main": "www/bundle.js",
+  "authors": [
+    "sombriks@gmail.com"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "game",
+    "math",
+    "javascript",
+    "pixi"
+  ],
+  "homepage": "https://github.com/sombriks/numberfield",
+  "private": true,
+  "dependencies": {
+    "pixi.js": "pixi#^3.0.11"
+  }
+}

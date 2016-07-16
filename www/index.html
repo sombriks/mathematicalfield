@@ -1,10 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <script src="socket.io/socket.io.js"></script>
-    <script type="text/javascript" src="bundle.js"></script>
-    <title>Mathematical Field</title>
-  </head>
-  <body>
-  </body>
+<head>
+  <title>Mathematical Field</title>
+  <link rel="stylesheet" href="index.css" />
+  <script src="socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="bower_components/pixi.js/bin/pixi.js"></script>
+  <script type="text/javascript" src="bower_components/system.js/dist/system.js"></script>
+  <script type="text/javascript">
+    System.config({
+      baseURL:"/src-client",
+      meta:{
+        "gameinit.js":{
+          format:"cjs"
+        }   
+      }
+    });
+    System.import("gameinit.js");
+  </script>
+</head>
+<body>
+</body>
 </html>
