@@ -16,11 +16,11 @@ function GameMap(gamemap) {
 	this.hud = new Hud(this);
 
 	this.gamemap = gamemap || [ //
-	[ 0, 0, 0, 0, 0 ], //
-	[ 0, 0, 0, 0, 0 ], //
-	[ 0, 0, 0, 0, 0 ], //
-	[ 0, 0, 0, 0, 0 ], //
-	[ 0, 0, 0, 0, 0 ] //
+	[ 1, 1, 1, 0, 1 ], //
+	[ 1, 1, 1, 0, 1 ], //
+	[ 1, 1, 1, 1, 1 ], //
+	[ 1, 0, 1, 1, 1 ], //
+	[ 1, 0, 1, 1, 1 ] //
 	];
 
 	this.makeSquares = function() {
@@ -28,8 +28,10 @@ function GameMap(gamemap) {
 		while (++i < this.gamemap.length) {
 			var j = -1;
 			while (++j < this.gamemap[i].length) {
-				this.gamemap[i][j] = Math.floor(Math.random() * 10);
-				this.gamemap[i][j] = new Square(i, j, this.gamemap[i][j], this);
+				if (this.gamemap[i][j]) {
+					this.gamemap[i][j] = Math.floor(Math.random() * 10);
+					this.gamemap[i][j] = new Square(i, j, this.gamemap[i][j], this);
+				}
 			}
 		}
 	};
@@ -42,7 +44,9 @@ function GameMap(gamemap) {
 		while (i-- > 0) {
 			var j = this.gamemap[i].length;
 			while (j-- > 0) {
-				this.gamemap[i][j].step();
+				if (this.gamemap[i][j] && this.gamemap[i][j]) {
+					this.gamemap[i][j].step();
+				}
 			}
 		}
 	}
