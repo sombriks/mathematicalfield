@@ -1,10 +1,21 @@
 var Square = require("./square.js");
+var Hud = require("./hud.js");
 
-function GameMap(stage) {
+function GameMap() {
 
 	this.stage = new PIXI.Container();
-	this.stage.x=200;
-	this.stage.y=200;
+	this.stage.x=0;
+	this.stage.y=0;
+	
+	// conteineres manipuláveis
+	this.map = new PIXI.Container()
+	this.map.x = 100;
+	this.map.y = 100;
+	this.stage.addChild(this.map);
+	
+
+	this.hud = new Hud(this);
+	
 	
 	this.gamemap = [ //
 	[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], //
@@ -18,7 +29,7 @@ function GameMap(stage) {
 	[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], //
 	[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ] //
 	];
-	
+
 	this.makeSquares = function() {
 		var i = -1;
 		while (++i < this.gamemap.length) {
@@ -28,10 +39,11 @@ function GameMap(stage) {
 			}
 		}
 	};
-	
+
 	this.makeSquares()
 
 	this.step = function() {
+		this.hud.step();
 		var i = this.gamemap.length;
 		while (i-- > 0) {
 			var j = this.gamemap[i].length;
@@ -40,12 +52,12 @@ function GameMap(stage) {
 			}
 		}
 	}
-	
-	this.resize=function(w,h){
-		var x = ( w - 320 ) / 2;
-		var y = ( h - 320 ) / 2;
-		this.stage.x=x;
-		this.stage.y=y;
+
+	this.resize = function(w, h) {
+		var x = w < h ? w : h;
+		var s = x / 640;
+		
+		this.stage.scale.set(s);
 	}
 
 }

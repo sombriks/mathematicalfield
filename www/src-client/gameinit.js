@@ -5,7 +5,8 @@ var renderer = new PIXI.WebGLRenderer(320, 240, {
 });
 document.body.appendChild(renderer.view);
 
-var gm = new GameMap();
+var gm  = new GameMap();
+
 
 function resize() {
 	var width = document.body.clientWidth;
