@@ -7,21 +7,26 @@ function GameMap(gamemap) {
 	this.stage.x = 0;
 	this.stage.y = 0;
 
-	// conteineres manipuláveis
 	this.map = new PIXI.Container()
-	this.map.x = 50;
+	this.map.x = 25;
 	this.map.y = 50;
 	this.stage.addChild(this.map);
 
-	this.hud = new Hud(this);
-
+	// XXX the map is rotated
 	this.gamemap = gamemap || [ //
-	[ 1, 1, 1, 0, 1 ], //
-	[ 1, 1, 1, 0, 1 ], //
-	[ 1, 1, 1, 1, 1 ], //
-	[ 1, 0, 1, 1, 1 ], //
-	[ 1, 0, 1, 1, 1 ] //
+	[ 1, 1, 1, 1, 1], //
+	[ 1, 1, 1, 0, 1], //
+	[ 1, 1, 1, 1, 1], //
+	[ 1, 1, 1, 1, 1], //
+	[ 1, 0, 1, 1, 1], //
+	[ 1, 0, 1, 0, 1], //
 	];
+	
+	this.owned = 0;
+	
+	this.total = 0;
+	
+	this.hud = new Hud(this);
 
 	this.makeSquares = function() {
 		var i = -1;
@@ -31,6 +36,7 @@ function GameMap(gamemap) {
 				if (this.gamemap[i][j]) {
 					this.gamemap[i][j] = Math.floor(Math.random() * 10);
 					this.gamemap[i][j] = new Square(i, j, this.gamemap[i][j], this);
+					this.total++;
 				}
 			}
 		}
@@ -39,6 +45,11 @@ function GameMap(gamemap) {
 	this.makeSquares()
 
 	this.step = function() {
+		
+		if(this.total == this.owned){
+			alert("Fim de jogo!");
+			return false;
+		}
 		this.hud.step();
 		var i = this.gamemap.length;
 		while (i-- > 0) {
@@ -49,11 +60,13 @@ function GameMap(gamemap) {
 				}
 			}
 		}
+		
+		return true;
 	}
 
 	this.resize = function(w, h) {
 		var x = w < h ? w : h;
-		var s = x / 320;
+		var s = x / 300;
 
 		this.stage.scale.set(s);
 	}
@@ -63,6 +76,7 @@ function GameMap(gamemap) {
 		if (square) {
 			square.value = 9;
 			square.paintGreen();
+			this.owned++;
 		}
 	}
 
@@ -104,6 +118,10 @@ function GameMap(gamemap) {
 			}
 		}
 		return 0;
+	};
+	
+	this.destroy = function(){
+		this.stage.destroy(true);
 	};
 }
 

@@ -20,7 +20,8 @@ function Square(x, y, value, gamemap) {
 	sprite.interactive = true;
 
 	this.inputup = function() {
-		console.debug(this);
+		sprite.angle=0.1;
+		// console.debug(this);
 		// not the player bit is near
 		if (!this.playerid && this.nearplayer) {
 			var canattack = gamemap.nearAmmo(x, y);
@@ -29,6 +30,7 @@ function Square(x, y, value, gamemap) {
 			if (this.value == -1) {
 				this.value = 0;
 				this.paintGreen();
+				gamemap.owned++;
 			}
 		} else if (this.value < 9 && this.playerid) {
 			var canattack = gamemap.nearAmmo(x, y);
