@@ -7,6 +7,7 @@ document.body.appendChild(renderer.view);
 
 var gm  = new GameMap();
 
+gm.givePlayer(2,2);// começamos com uma casa
 
 function resize() {
 	var width = document.body.clientWidth;
